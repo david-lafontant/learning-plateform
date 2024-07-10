@@ -36,3 +36,5 @@
 /node_modules
 .env
 /.vscode
+/spec/examples.txt
+spec/examples.txt
