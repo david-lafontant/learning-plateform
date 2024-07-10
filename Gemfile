@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |_repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
@@ -56,13 +56,13 @@ gem 'image_processing', '~> 1.2'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'brakeman'
+  gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main'
   gem 'pry'
   gem 'rails_best_practices'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
-  gem 'database_cleaner'
 end
 
 group :development do
@@ -82,7 +82,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'kaminari'
 gem 'poppler'
-gem 'rubocop' ,'>= 1.0', '< 2.0'
+gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'sidekiq'
 # gem 'simple_form'
 gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
