@@ -21,7 +21,8 @@ class TrainingsController < ApplicationController
 
   # POST /trainings or /trainings.json
   def create
-    @training = Training.new(training_params)
+    # @training = Training.new(training_params)
+    @training = Training.new(params.require(:training).permit(:name, :description, :credit , course_ids: []))
 
     respond_to do |format|
       if @training.save
@@ -37,7 +38,7 @@ class TrainingsController < ApplicationController
   # PATCH/PUT /trainings/1 or /trainings/1.json
   def update
     respond_to do |format|
-      if @training.update(training_params)
+      if  @training = Training.new(params.require(:training).permit(:name, :description, :credit , course_ids: []))
         format.html { redirect_to training_url(@training), notice: "Training was successfully updated." }
         format.json { render :show, status: :ok, location: @training }
       else
@@ -65,6 +66,6 @@ class TrainingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training_params
-      params.require(:training).permit(:name, :description, :credit)
+      params.require(:training).permit(:name, :description, :credit )
     end
 end
