@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :grades
   resources :lessons
   resources :course_modules
   resources :courses
