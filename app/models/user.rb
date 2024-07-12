@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :courses, foreign_key: :teacher_id
   has_many :course_enrollements, foreign_key: :student_id, dependent: :destroy
   has_many :courses, through: :course_enrollements
+  has_one :enrollement_training, foreign_key: :student_id, dependent: :destroy
+  has_one :training, through: :enrollement_training
   has_many :grades, foreign_key: :student_id
 end
