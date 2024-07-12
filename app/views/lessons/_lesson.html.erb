@@ -1,0 +1,24 @@
+<div id="<%= dom_id lesson %>">
+  <p>
+    <strong>Title:</strong>
+    <%= lesson.title %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= lesson.content %>
+  </p>
+
+  <p>
+    <strong>Materials:</strong>
+    <% lesson.materials.each do |material| %>
+      <div><%= link_to material.filename, material %></div>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Course module:</strong>
+    <%= lesson.course_module_id %>
+  </p>
+
+</div>
