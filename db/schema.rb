@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_12_073647) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_12_194533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_12_073647) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "course_enrollements", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_enrollements_on_course_id"
+    t.index ["student_id"], name: "index_course_enrollements_on_student_id"
+  end
+
   create_table "course_modules", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -71,6 +80,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_12_073647) do
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
+  create_table "grades", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "course_id", null: false
+    t.float "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_grades_on_course_id"
+    t.index ["student_id"], name: "index_grades_on_student_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "course_module_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_module_id"], name: "index_lessons_on_course_module_id"
+  end
+
   create_table "trainings", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -93,8 +121,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_12_073647) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "course_enrollements", "courses"
+  add_foreign_key "course_enrollements", "users", column: "student_id"
   add_foreign_key "course_modules", "courses"
   add_foreign_key "course_trainings", "courses"
   add_foreign_key "course_trainings", "trainings"
   add_foreign_key "courses", "users", column: "teacher_id"
+  add_foreign_key "grades", "courses"
+  add_foreign_key "grades", "users", column: "student_id"
+  add_foreign_key "lessons", "course_modules"
 end
