@@ -5,4 +5,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :courses, foreign_key: :teacher_id
+  has_many :grades, foreign_key: :student_id
 end
