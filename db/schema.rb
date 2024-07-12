@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_091831) do
     t.string "name"
     t.string "code"
     t.string "description"
-    t.string "credit"
+    t.integer "credit"
     t.bigint "teacher_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
