@@ -28,8 +28,13 @@
 
   <div>
     <%= form.label :course_module_id, style: "display: block" %>
-    <%= form.text_field :course_module_id %>
+ <%= form.collection_select :course_module_id, CourseModule.all, :id, :title %>
+   
   </div>
+
+
+
+  <%= form.label :products %>
 
   <div>
     <%= form.submit %>
