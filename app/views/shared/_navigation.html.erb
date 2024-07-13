@@ -1,5 +1,9 @@
 <nav>
-<%= link_to "trainings", trainings_path %>
-<%= link_to "coursess", courses_path %>
+<%= link_to "Trainings", trainings_path %>|
+<%= link_to "Courses", courses_path %>|
+<%= link_to "Grades", grades_path %>|
+<%= link_to "Lessons", lessons_path %>|
+<%= link_to "Course modules", course_modules_path %>
+
 <%= link_to "signout", destroy_user_session_path, data: {turbo_method: :delete} %>
 <nav>
