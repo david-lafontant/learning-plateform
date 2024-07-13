@@ -33,7 +33,7 @@
 
   <div>
     <%= form.label :teacher_id, style: "display: block" %>
-    <%= form.text_field :teacher_id %>
+    <%= form.collection_select :teacher_id, User.all, :id, :email %>
   </div>
 
   <div>
