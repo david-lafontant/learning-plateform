@@ -4,7 +4,7 @@ class Course < ApplicationRecord
   has_many :trainings, through: :course_trainings
   has_many :course_enrollements, dependent: :destroy
   has_many :users, through: :course_enrollements, foreign_key: :student_id
-  has_many : course_modules, dependent: :destroy
+  has_many :course_modules, dependent: :destroy
   
   validates :name, :description, :credit, :code, presence: true
   validates :name, length: {in: 8..40}, uniqueness: true
