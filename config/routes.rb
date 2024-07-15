@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :path_prefix => 'system'
 
+  post 'inscription', to: 'users#create_inscription', as: :create_inscription
+  get 'inscription', to: 'users#inscription', as: :inscription
 
 
   root'page#home'
