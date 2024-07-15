@@ -7,7 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-User.create(email: "kogi@McKogi.com", password: "password12345")
+User.create(email: "kogi@McKogi.com", password: "password12345")#teacher
+User.create(email: "kogi2@McKogi.com", password: "password12345")#student
+User.create(email: "kogi3@McKogi.com", password: "password12345")#student
+User.create(email: "kogi4@McKogi.com", password: "password12345")#student
+
+
 Training.create(name: "Applied Data Science", description: "Du blabla pour dire qu'on fait de la statistique", credit: 0)
 Course.create!(name: "mathematics000", description: "un ptit pied laurier bien charge de fleur", code: "MATH000", credit: 12, teacher_id:User.first.id)
 Course.create!(name: "mathematics001", description: "un ptit pied laurier bien charge de fleur", code: "MATH001", credit: 13, teacher_id:User.first.id)
