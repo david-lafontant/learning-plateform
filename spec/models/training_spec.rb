@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Training, type: :model do
-
   subject do
-    described_class.new(name: 'abracadabra', description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10)
+    described_class.new(name: 'abracadabra',
+                        description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10)
   end
 
   it 'is invalid if the length of the name is less than 8 characters' do
@@ -37,12 +37,11 @@ RSpec.describe Training, type: :model do
     expect(subject).to_not be_valid
   end
   it 'is invalid if the training name is not unique' do
-    training1 = Training.create(name: 'abracadabra', description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10)
-    training2 = Training.create(name: 'abracadabra', description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjhochnjmjnhbyfWSRFRDfg', credit: 19)
+    training1 = Training.create(name: 'abracadabra',
+                                description: 'dctjhkydytcyghkjluydtcxglnfrzx_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10)
+    training2 = Training.create(name: 'abracadabra',
+                                description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjnjmjnhbyfWSRFRDfg', credit: 19)
     expect(training1).to be_valid
     expect(training2).to_not be_valid
   end
-
-
-
 end

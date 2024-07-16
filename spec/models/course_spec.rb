@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Course, type: :model do
   subject do
-    described_class.new(name: 'abracadabra', code: "AMX4565", description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10, teacher_id: 1)
+    described_class.new(name: 'abracadabra', code: 'AMX4565',
+                        description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchn', credit: 10, teacher_id: 1)
   end
 
   it 'is invalid if the length of the name is less than 8 characters' do
@@ -10,7 +11,7 @@ RSpec.describe Course, type: :model do
     expect(subject).to_not be_valid
   end
   it 'is invalid if the length of the name is more than 40 characters' do
-    subject.name = 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfghnjgfcv123456788765rfghygtffrv'
+    subject.name = 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhhnjgfcv123456'
     expect(subject).to_not be_valid
   end
 
@@ -46,19 +47,21 @@ RSpec.describe Course, type: :model do
   end
   it 'is invalid if the course name is not unique' do
     user = User.create(email: 'info@example.com', password: 'Password2345')
-    course1 = Course.create(name: 'abracadabra', code: "AMX4565", description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10, teacher_id: user.id)
-    course2 = Course.create(name: 'abracadabra', code: "AMX4566", description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjhochnjmjnhbyfWSRFRDfg', credit: 19, teacher_id: user.id)
+    course1 = Course.create(name: 'abracadabra', code: 'AMX4565',
+                            description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjh', credit: 10, teacher_id: user.id)
+    course2 = Course.create(name: 'abracadabra', code: 'AMX4566',
+                            description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjh', credit: 19, teacher_id: user.id)
     expect(course1).to be_valid
     expect(course2).to_not be_valid
   end
-
 
   it 'is invalid if the course code is not unique' do
     user = User.create(email: 'info@example.com', password: 'Password2345')
-    course1 = Course.create(name: 'abracadabra', code: "ABSC345", description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', credit: 10, teacher_id: user.id)
-    course2 = Course.create(name: 'abrocadabrac', code: "ABSC345",description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjhochnjmjnhbyfWSRFRDfg', credit: 19, teacher_id: user.id)
+    course1 = Course.create(name: 'abracadabra', code: 'ABSC345',
+                            description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.l', credit: 10, teacher_id: user.id)
+    course2 = Course.create(name: 'abrocadabrac', code: 'ABSC345',
+                            description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.l', credit: 19, teacher_id: user.id)
     expect(course1).to be_valid
     expect(course2).to_not be_valid
   end
-
 end

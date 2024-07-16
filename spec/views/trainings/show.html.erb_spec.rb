@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "trainings/show", type: :view do
+RSpec.describe 'trainings/show', type: :view do
   before(:each) do
     assign(:training, Training.create!(
-      name: "Name",
-      description: "MyText",
-      credit: 2
-    ))
+                        name: 'Name',
+                        description: 'MyText',
+                        credit: 2
+                      ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/MyText/)
