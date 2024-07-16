@@ -6,11 +6,8 @@ def inscription
   end
 end
 
-
 def create_inscription
 
-  puts params
-  
   required = [:student_id, :course_id]
   form_complete = true
   required.each do |f|
@@ -36,19 +33,37 @@ def create_inscription
   end
 end
 
-def contact
+def enrollement
   respond_to do |format|
-    format.html { render :contact, locals: { feedback: {} } }
+    format.html { render :enrollement, locals: { feedback: {} } }
   end
+end
 
-
-
-
-
-
-
-
-
+def create_enrollement
+  
+  required = [:student_id, :training_id]
+  puts params
+  
+  form_complete = true
+  required.each do |f|
+    if params.has_key? f and not params[f].blank?
+      # that's good news. do nothing
+    else
+      form_complete = false
+    end
+  end
+  if form_complete
+    form_status_msg = 'Thank you for your feedback!'
+    puts params[:student_id]
+    EnrollementTraining.create!(training_id: params[:student_id], student_id: params[:student_id])
+  
+  else
+    form_status_msg = 'Please fill in all the remaining form fields and resubmit.'
+  end
+  respond_to do |format|
+ 
+    format.html { render :enrollement, locals: { status_msg: form_status_msg, feedback: params } }
+  end
 end
 
 end
