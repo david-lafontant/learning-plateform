@@ -1,0 +1,29 @@
+
+<h1>New enrollement to course</h1>
+<br/>
+<% if local_assigns.has_key? :status_msg %>
+   <p><%= status_msg %></p>
+<% end %>
+
+<hr/>
+ <%= form_with url: create_enrollement_path, local: true, method: :post do %> 
+    <div>
+      <%= label_tag :student_id %>
+      <%= 
+      select_tag(:student_id, options_from_collection_for_select(User.all, :id, :email), include_blank: "Select student")
+      %>
+    
+    </div>
+  
+    <div>
+      <%= label_tag :training_id %>
+        <%= 
+      select_tag(:training_id, options_from_collection_for_select(Training.all, :id, :name), include_blank: "Select training")
+      %>
+    </div>
+    <div>
+      <%= submit_tag "Create course enrollement" %>
+    </div>
+  <% end %>
+
+
