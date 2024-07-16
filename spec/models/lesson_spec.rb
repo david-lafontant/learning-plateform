@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Lesson, type: :model do
-
   subject do
     described_class.new(
-      title: "lesson 4",
+      title: 'lesson 4',
       content: %q(
         dctjhkydytcyghkjluydtcxgjnfrzx\gb_njm.lkjhgchnjmjnhbyfWSRFRDfghnjgfcv123456788765rfghygtffrv
         dctjhkydytcyghkjluydtcxgjnfrzx\gb_njm.lkjhgchnjmjnhbyfWSRFRDfghnjgfcv123456788765rfghygtffrv
@@ -47,8 +46,4 @@ RSpec.describe Lesson, type: :model do
     subject.course_module_id = 0
     expect(subject).to_not be_valid
   end
-
-
-
-
 end

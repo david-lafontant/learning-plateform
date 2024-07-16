@@ -33,13 +33,12 @@ RSpec.describe EnrollementTraining, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'is invalid if student_id is duplicated' do 
-    enrollement1 = EnrollementTraining.create(training_id: 2, student_id: 2)
+  it 'is invalid if student_id is duplicated' do
+    EnrollementTraining.create(training_id: 2, student_id: 2)
     enrollement2 = EnrollementTraining.create(training_id: 3, student_id: 2)
     enrollement3 = EnrollementTraining.create(training_id: 2, student_id: 2)
 
     expect(enrollement2).to_not be_valid
     expect(enrollement3).to_not be_valid
-
   end
 end

@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe CourseModule, type: :model do
-
   subject do
     described_class.new(title: 'abracadabra',
-    description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg', 
-    course_id: 2)
+                        description: 'dctjhkydytcyghkjluydtcxgjnfrzx$gb_njm.lkjhgchnjmjnhbyfWSRFRDfg',
+                        course_id: 2)
   end
 
   it 'is invalid if the length of the title is less than 8 characters' do
@@ -43,14 +42,12 @@ RSpec.describe CourseModule, type: :model do
     expect(subject).to_not be_valid
   end
   it 'is invalid if the title is not unique' do
-    course_module_1 = CourseModule.create(title: 'abracadabra',
-                                description: 'dctjhkydytcyghkjluydtcxglnfrzx_njm.lkjhgchnjmjnhbyfWSRFRDfg', course_id: 3)
-    course_module_2 = CourseModule.create(title: 'abracadabra',
-                                description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjnjmjnhbyfWSRFRDfg', course_id: 4)
-    expect(course_module_2).to_not be_valid
+    CourseModule.create(title: 'abracadabra',
+                        description: 'dctjhkydytcyghkjluydtcxglnfrzx_njm.lkjhgchnjmjnhbyfWSRFRDfg',
+                        course_id: 3)
+    coursemodule2 = CourseModule.create(title: 'abracadabra',
+                                        description: 'dctjhkydytcyghkjluydtcxglnfrzx$gb_njm.lkjnjmjnhbyfWSRFRDfg',
+                                        course_id: 4)
+    expect(coursemodule2).to_not be_valid
   end
-
-
-
-
 end

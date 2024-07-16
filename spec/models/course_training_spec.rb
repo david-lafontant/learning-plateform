@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CourseTraining, type: :model do
-
   subject do
     described_class.new(training_id: 2,
                         course_id: 2)

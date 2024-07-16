@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Grade, type: :model do
-
   subject do
     described_class.new(student_id: 3, course_id: 3, grade: 75)
   end
@@ -52,5 +51,4 @@ RSpec.describe Grade, type: :model do
     subject.grade = 28.to_s
     expect(subject).to_not be_valid
   end
-
 end
