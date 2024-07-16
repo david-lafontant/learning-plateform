@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'inscription', to: 'users#inscription', as: :inscription
 
 
+  post 'enrollement', to: 'users#create_enrollement', as: :create_enrollement
+  get 'enrollement', to: 'users#enrollement', as: :enrollement
+
+
   root'page#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
