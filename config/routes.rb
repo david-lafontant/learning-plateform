@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :grades
+  resources :lessons
+  resources :course_modules
+  resources :courses
+  resources :trainings
+
+  devise_for :users, :path_prefix => 'system'
+
+  post 'inscription', to: 'users#create_inscription', as: :create_inscription
+  get 'inscription', to: 'users#inscription', as: :inscription
+
+
+  post 'enrollement', to: 'users#create_enrollement', as: :create_enrollement
+  get 'enrollement', to: 'users#enrollement', as: :enrollement
+
+
   root'page#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # resources :course_enrollements#, only: [:show, :update]
 end
