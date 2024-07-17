@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   def inscription
     respond_to do |format|
       format.html { render :inscription, locals: { feedback: {} } }

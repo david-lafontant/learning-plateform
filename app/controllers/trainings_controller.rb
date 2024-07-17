@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: %i[show edit update destroy]
-
+  load_and_authorize_resource
   # GET /trainings or /trainings.json
   def index
     @trainings = Training.all

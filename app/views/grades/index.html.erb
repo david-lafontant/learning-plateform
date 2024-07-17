@@ -10,5 +10,6 @@
     </p>
   <% end %>
 </div>
-
+<% if can? :create, Grade %>
 <%= link_to "New grade", new_grade_path %>
+  <% end %>
