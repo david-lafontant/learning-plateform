@@ -10,5 +10,6 @@
     </p>
   <% end %>
 </div>
-
+<% if can? :create, Training %>
 <%= link_to "New training", new_training_path %>
+  <% end %>
