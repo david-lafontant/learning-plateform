@@ -10,4 +10,11 @@ class User < ApplicationRecord
   has_one :enrollement_training, foreign_key: :student_id, dependent: :destroy, inverse_of: :user
   has_one :training, through: :enrollement_training
   has_many :grades, foreign_key: :student_id, inverse_of: :user
+
+  enum role: [:student, :teacher, :admin]
+  after_initialize do 
+    if self.new_record?
+       self.role ||= :student
+    end
+  end
 end
