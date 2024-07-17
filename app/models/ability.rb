@@ -4,6 +4,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    # student and teacher are restriccted to read
+      return unless user.present?
+      can :read, :all
+    # the admin can manage all the ressources
+      return unless user.admin?
+      can :manage, :all
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
