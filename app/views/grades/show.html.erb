@@ -3,8 +3,11 @@
 <%= render @grade %>
 
 <div>
+  <% if can? :update, @grade %>
   <%= link_to "Edit this grade", edit_grade_path(@grade) %> |
+  <% end %>
   <%= link_to "Back to grades", grades_path %>
-
+<% if can? :destroy, @grade %>
   <%= button_to "Destroy this grade", @grade, method: :delete %>
+  <% end %>
 </div>
